@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Job Listings</title>
+    <script src="/script.js" defer></script> <!-- Link to your JavaScript file -->
+</head>
+<body>
+    <h1>Job Listings</h1>
+    <ul>
+        <% jobs.forEach(job => { %>
+            <li>
+                <h3><%= job.title %></h3>
+                <p><%= job.description %></p>
+                <p>Location: <%= job.location %></p>
+                <button onclick="applyForJob('<%= job._id %>')">Apply</button>
+            </li>
+        <% }) %>
+    </ul>
+    <script>
+        function applyForJob(jobId) {
+           
+
+            fetch(`/jobs/apply/${jobId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId: userId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while applying for the job.');
+            });
+        }
+
+        // Example function to get user ID (you need to implement this)
+        function getUserId() {
+            // This function should return the logged-in user's ID, e.g., from local storage or a session
+            return localStorage.getItem('userId'); // Adjust according to your actual implementation
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Job Portal</title>
+</head>
+<body>
+    <h1>Welcome to the Job Portal</h1>
+
+    <!-- Navigation Links for Login and Signup -->
+    <nav>
+        <ul>
+            <li><a href="/users/login">Login</a></li>
+            <li><a href="/users/signup">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <h2>Search for Jobs</h2>
+    <form action="/jobs/search" method="GET">
+        <input type="text" name="title" placeholder="Job Title" required>
+        <input type="text" name="location" placeholder="Location" required>
+        <button type="submit">Search Jobs</button>
+    </form>
+
+    <h2>Search Resumes</h2>
+    <form action="/users/search-resumes" method="GET">
+        <input type="text" name="name" placeholder="Search Resumes by Name" required>
+        <button type="submit">Search Resumes</button>
+    </form>
+</body>
+</html>
